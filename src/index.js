@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import mongoose from 'mongoose';
@@ -14,7 +15,7 @@ mongoose.connect(process.env.MONGODB, {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: { User },
+  context: () => ({ User }),
 });
 
 const app = express();
